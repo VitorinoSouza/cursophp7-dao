@@ -36,6 +36,9 @@ require_once("config.php");
 
 //echo $aluno;
 
+/*
+//alterar um usuario
+
 $usuario = new Usuario();
 
 $usuario ->loadById(16);
@@ -43,6 +46,16 @@ $usuario ->loadById(16);
 $usuario->update("professor","profile");
 
 echo $usuario;
+*/
+
+$usuario = new Usuario();
+
+$usuario ->loadById(15);
+
+$usuario->delete();
+
+echo $usuario;
+
 
 
 ?>

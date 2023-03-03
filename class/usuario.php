@@ -42,7 +42,7 @@ class Usuario {
         return $this->dtcadastro;
     }
 
-    public function setDtcadstro($value){
+    public function setDtcadastro($value){
 
         return $this->dtcadastro = $value;
     }
@@ -105,7 +105,7 @@ class Usuario {
         $this->setIdusuario($data['idusuario']);
         $this->setDeslogin($data['deslogin']);
         $this->setDessenha($data['dessenha']);
-        $this->setDtcadstro(new DateTime($data['dtcadastro']));
+        $this->setDtcadastro(new DateTime($data['dtcadastro']));
     }
 
     public function insert(){
@@ -134,6 +134,22 @@ class Usuario {
             ':PASSWORD'=>$this->getDessenha(),
             ':ID'=>$this->getIdusuario()
         ));
+
+    }
+
+    public function delete(){
+
+        $sql = new Sql();
+
+        $sql->query("DELETE FROM tb_usuarios WHERE idusuario = :ID", array(
+            ':ID'=>$this->getIdusuario()
+
+        ));
+
+        $this->setIdusuario(0);
+        $this->setDeslogin("");
+        $this->setDessenha("");
+        $this->setDtcadastro(new DateTime());
 
     }
 
